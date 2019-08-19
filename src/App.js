@@ -1,24 +1,22 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import { makeStyles, useTheme } from "@material-ui/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import Divider from "@material-ui/core/Divider";
+import { makeStyles } from "@material-ui/styles";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+
 import Carousel from "./Carousel.js";
 import events from "./events.js";
 import ReactGA from "react-ga";
+import Flyer from './Flyer.svg'
 ReactGA.initialize("UA-138046178-1");
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1
 	},
 	content: {
-		margin: theme.spacing.unit * 2
+		margin: theme.spacing.unit * 2,
+		marginTop: 0
 	},
 	top: {
 		height: 80,
@@ -31,12 +29,23 @@ const useStyles = makeStyles(theme => ({
 			paddingRight: theme.spacing.unit * 30
 		}
 	},
+	pageImageContainer: {
+		margin: 'auto',
+		width: '100%',
+		height: '100%',
+		maxWidth: 780
+	},
+	pageImage: {
+		width: '100%',
+		height: '100%'
+	},
 	homeContent: {
 		width: "100%"
 	},
 	homeCard: {
-		width: "100%"
-		// minHeight: 200
+		width: "100%",
+		minHeight: 200,
+		maxWidth: 780
 	},
 	header: {
 		width: "100%",
@@ -50,100 +59,22 @@ const useStyles = makeStyles(theme => ({
 }));
 function App() {
 	const classes = useStyles();
-	const theme = useTheme();
+
 	useEffect(() => {
 		ReactGA.pageview(window.location.pathname + window.location.search);
 	}, [window.location.pathname]);
 	return (
 		<div className={classes.root}>
-			<AppBar
-				position="static"
-				color="default"
-				elevation={0}
-				className={classes.top}
-			>
-				<Toolbar className={classes.bar}>
-					<img
-						className={classes.headerImage}
-						src={process.env.PUBLIC_URL + "/images/banner.png"}
-						alt=""
-					/>
-					<span style={{ flex: 1 }} />
-
-					<Typography
-						style={{
-							color: "grey",
-							fontFamily: "cursive",
-							textShadow: `2px 2px 5px ${
-								theme.palette.secondary["400"]
-								}`
-						}}
-					>
-						Let us be your next indisposable team member!
-					</Typography>
-				</Toolbar>
-			</AppBar>
 			<main className={classes.content}>
-				<Grid
-					container
-					direction="column"
-					justify="flex-start"
-					alignItems="center"
-					spacing={1}
-				>
-					<Grid
-						item
-						xs={12}
-						md={8}
-						lg={6}
-						className={classes.homeCard}
-					>
-						<Carousel events={events} />
-					</Grid>
-					<Grid
-						item
-						xs={12}
-						md={8}
-						lg={6}
-						className={classes.homeCard}
-					>
-						<Card className={classes.homeCard}>
-							<CardHeader
-								className={classes.thinCardHeader}
-								title="Our Story"
-							/>
-							<CardContent>
-								<Typography variant="body2">
-									BuildSci was launched in 2019 by three
-									University of Maryland scientists,
-									engineers, and entrepreneurs with the aim to
-									reduce the inefficiencies embedded in the
-									cumbersome process of energy audits and
-									retrofits for building porfolio managers.
-								</Typography>
-							</CardContent>
-						</Card>
-					</Grid>
-					<Grid
-						item
-						xs={12}
-						md={8}
-						lg={6}
-						className={classes.homeCard}
-					>
-						<Card className={classes.homeCard}>
-							<CardHeader
-								className={classes.thinCardHeader}
-								title="Contact Us"
-							/>
-							<CardContent>
-								<Typography>
-									Email: <a href="">buildsciinc@gmail.com</a>
-								</Typography>
-							</CardContent>
-						</Card>
-					</Grid>
-				</Grid>
+				<div className={classes.pageImageContainer}>
+					<img src={Flyer} className={classes.pageImage} />
+				</div>
+				<div className={classes.pageImageContainer}>
+					<Divider variant='middle' style={{ marginTop: 8, marginBottom: 8 }} />
+					<Typography variant='h4' gutterBottom>BuildSci Events</Typography>
+					<Carousel events={events} />
+				</div>
+
 			</main>
 		</div>
 	);

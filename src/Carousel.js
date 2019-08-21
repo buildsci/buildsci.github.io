@@ -14,7 +14,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import format from "date-fns/format";
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews, { interval: 12000 });
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews, { interval: 8000 });
 
 const tutorialSteps = [
 	{

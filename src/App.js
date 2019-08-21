@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Carousel from "./Carousel.js";
 import events from "./events.js";
 import ReactGA from "react-ga";
-import Flyer from './Flyer.svg'
+import Flyer from './Flyer_Orange.svg'
 ReactGA.initialize("UA-138046178-1");
 const useStyles = makeStyles(theme => ({
 	root: {

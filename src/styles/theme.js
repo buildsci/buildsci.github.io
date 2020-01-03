@@ -1,6 +1,7 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import yellow from "@material-ui/core/colors/yellow";
+import { primary, secondary, accent } from "./palette";
 let theme = createMuiTheme({
 	typography: {
 		fontFamily: "'Lato', sans-serif",
@@ -12,8 +13,10 @@ let theme = createMuiTheme({
 		}
 	},
 	palette: {
-		primary: blueGrey,
-		secondary: yellow,
+		primary: primary,
+		secondary: secondary,
+		info: accent,
+		accent,
 		background: {
 			// default: "#e8e8e8!important"
 		}
@@ -105,7 +108,7 @@ theme = {
 		},
 		MuiIconButton: {
 			root: {
-				padding: theme.spacing.unit
+				padding: theme.spacing(1)
 			}
 		},
 		MuiTooltip: {

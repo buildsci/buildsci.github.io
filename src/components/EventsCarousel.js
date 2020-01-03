@@ -16,45 +16,20 @@ import { autoPlay } from "react-swipeable-views-utils";
 import format from "date-fns/format";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews, { interval: 8000 });
 
-const tutorialSteps = [
-	{
-		label: "San Francisco – Oakland Bay Bridge, United States",
-		imgPath:
-			"https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
-	},
-	{
-		label: "Bird",
-		imgPath:
-			"https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60"
-	},
-	{
-		label: "Bali, Indonesia",
-		imgPath:
-			"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80"
-	},
-	{
-		label: "NeONBRAND Digital Marketing, Las Vegas, United States",
-		imgPath:
-			"https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60"
-	},
-	{
-		label: "Goč, Serbia",
-		imgPath:
-			"https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60"
-	}
-];
-
 const useStyles = makeStyles(theme => ({
 	root: {
-		// maxWidth: 400,
-		flexGrow: 1
+		maxWidth: 800
 	},
 	header: {
 		display: "flex",
 		alignItems: "center",
-		height: 50,
-		paddingLeft: theme.spacing.unit * 4,
-		backgroundColor: theme.palette.background.default
+		// height: 50,
+		marginTop: theme.spacing(2),
+		marginBottom: theme.spacing(0),
+		marginLeft: theme.spacing(2),
+		marginRight: theme.spacing(2)
+		// paddingLeft: theme.spacing( 4),
+		// backgroundColor: theme.palette.background.default
 	},
 	img: {
 		height: 255,
@@ -78,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 function EventsCarousel(props) {
 	const classes = useStyles();
 	const theme = useTheme();
-	const { events } = props;
+	const { events, title, elevation = 0 } = props;
 	const [activeStep, setActiveStep] = React.useState(0);
 	const maxSteps = events.length;
 
@@ -96,20 +71,17 @@ function EventsCarousel(props) {
 
 	return (
 		<div className={classes.root}>
-			<Card>
+			<Card elevation={elevation}>
+				<Typography variant="h4" gutterBottom className={classes.header}>
+					{title}
+				</Typography>
 				<CardHeader
 					className={classes.thinCardHeader}
 					title={events[activeStep].title}
 					subheader={
 						events[activeStep].date && (
-							<Typography
-								variant="caption"
-								style={{ color: "grey" }}
-							>
-								{format(
-									events[activeStep].date,
-									"MMMM DD, YYYY"
-								)}
+							<Typography variant="caption" style={{ color: "grey" }}>
+								{format(events[activeStep].date, "MMMM DD, YYYY")}
 							</Typography>
 						)
 					}
@@ -125,29 +97,18 @@ function EventsCarousel(props) {
 						<div key={step.label}>
 							{Math.abs(activeStep - index) <= 2 ? (
 								<CardContent>
-									<Grid
-										container
-										direction="row"
-										spacing={16}
-									>
+									<Grid container direction="row" spacing={2}>
 										{step.imagePath && (
 											<Grid item xs={4}>
 												<img
-													className={
-														classes.buildingAvatar
-													}
-													src={
-														process.env.PUBLIC_URL +
-														step.imagePath
-													}
+													className={classes.buildingAvatar}
+													src={process.env.PUBLIC_URL + step.imagePath}
 													alt={step.title}
 												/>
 											</Grid>
 										)}
 										<Grid item xs={8}>
-											<Typography variant="body1">
-												{step.text}
-											</Typography>
+											<Typography variant="body1">{step.text}</Typography>
 										</Grid>
 									</Grid>
 								</CardContent>

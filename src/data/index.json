@@ -1,0 +1,26 @@
+{
+	"message": "BuildSci recognizes the need for communication and collaboration in building operations to make every building smart. Our services and products stand at the  unique nexus of buildings, people and technology aimed at sustainable savings.",
+	"solutions": [
+		{
+			"title": "Dashboards",
+			"text": "Customizable building, portfolio and project dashboards allow for easy tracking, analysis and reporting of energy goals both within an organization,  external third-parties and the public.",
+			"icon": "pollOutlined"
+		},
+		{
+			"title": "Analysis",
+			"text": "Efficient audits and intelligent analysis utilize  modern software solutions, the latest research, and modeling tools to provide the most comprehensive insight with the least burden.",
+			"icon": "ballotOutlined"
+		},
+		{
+			"title": "Reports",
+			"text": "Automated and curated reports on energy, sustainability and retrofits  allow for digestable information and reporting to various organizations (EnergyStar, LEED, State/Federal Gov’t.)",
+			"icon": "assignmentOutlined"
+		}
+	],
+	"features": [
+		"Data System, Building Type and Systems Agnostic",
+		"Easy Import and Export of Data and Reports",
+		"Interfaces, Analysis and Reporting Customizable to Client Brand",
+		"Independent and Verifiable Results "
+	]
+}
